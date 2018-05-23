@@ -1,13 +1,14 @@
 require 'pstore'
 
 class Base
-  DB_FILE = File.expand_path)("../../../db.pstore", __FILE__)
+  DB_FILE = File.expand_path("../../../db.pstore", __FILE__)
 
 
   module ClassMethods
     def find(id)
       db.transaction(true) do
         db[derive_db_id(self.name, id)]
+      end
 
     end
 
@@ -15,6 +16,7 @@ class Base
       db.transaction(true) do
         ids = extract_model_ids(db)
         ids.map { |key| db[key] }
+      end
     end
 
     def save(object)
@@ -45,6 +47,7 @@ class Base
     def all_ids
       db.transaction(true) do |db|
         extract_model_ids(db)
+      end
     end
 
     def extract_model_ids(store)
@@ -66,8 +69,4 @@ class Base
   def ensure_presence_of_id
     self.id ||= self.class.next_available_id
   end
-
 end
-
-
-

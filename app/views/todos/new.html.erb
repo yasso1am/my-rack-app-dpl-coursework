@@ -6,6 +6,10 @@
     <div>
       <h1><%= @title %></h1>
       <form action="/todos" method="POST">
+        <label for="todo_name">Name</label>
+        <input name="todo[name]" id="todo_name" />
+        <br />
+        <input type="submit" name="commit" value="create" />
       </form>
     </div>
   </body>
