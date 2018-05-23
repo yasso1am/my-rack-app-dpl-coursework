@@ -1,0 +1,18 @@
+<html>
+  <%= render_partial "base/_head.html.erb" %>
+  <body>
+    <div>
+      <h1><%= @title %></h1>
+      <p><a href="/todos/new">Create a new todo item</a></p>
+      <ul>
+        <% @todos.each do |todo| %>
+          <li>
+            <a href="/todos/<%= todo.id %>">
+              <%= "#{todo.name} - #{todo.name}" %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+ </body>
+</html>
